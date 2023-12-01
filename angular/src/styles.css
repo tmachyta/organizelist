@@ -1,1 +1,12 @@
-/* You can add global styles to this file, and also import other style files */
+body {
+  background-color: #F0F2F5;
+  width: 1440px;
+  height: 900px;
+  top: -456px;
+  left: -1126px;
+}
+
+/* Задній фон для навігаційного меню */
+.navbar {
+  background-color: #F0F2F5; /* Ваш бажаний колір фону */
+}

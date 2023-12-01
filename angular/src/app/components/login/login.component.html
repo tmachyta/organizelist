@@ -1,0 +1,41 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 mx-auto mt-5 task-manager d-flex align-items-center">
+      <img src="assets/images/taskmanager.png" alt="taskmanager" style="max-width: 100%; height: auto; margin-bottom: 50px; margin-right: -100px; margin-left: 160px ">
+      <div class="ml-3">
+        <h1>Task Manager</h1>
+        <h6 class="task-management">Task Management: Elevate Efficiency, Control Tasks, Prioritize</h6>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6 mx-auto mt-5">
+      <div class="buttons-routers">
+        <h6 class="card-title text-center py-3 nav-link" routerLink="/api/auth/login" routerLinkActive="active">Login</h6>
+        <h6 class="card-title text-center py-3 nav-link" routerLink="/api/auth/register" routerLinkActive="active">Sign Up</h6>
+      </div>
+      <div class="input-form email">
+        <input class="email-input" type="email" id="email" name="email" required [(ngModel)]="email" placeholder="Email">
+      </div>
+      <div class="input-form password">
+        <input class="password-input" type="password" id="password" name="password" required [(ngModel)]="password" placeholder="Password">
+      </div>
+      <div class="checkbox-and-text">
+        <input type="checkbox" id="rememberMe" name="rememberMe">
+        <label for="rememberMe">Remember me</label>
+        <span class="forgot-password">Forgot your password?</span>
+      </div>
+      <div class="button-sign">
+        <button class="card-title text-center py-3 nav-link" routerLink="/api/auth/login" routerLinkActive="active">Sign In</button>
+      </div>
+      <div class="image-row">
+        <span>Quick Sign-in:</span>
+        <img src="assets/images/google-circle.png" alt="google-cicrle">
+        <img src="assets/images/windows.png" alt="windows">
+        <img src="assets/images/linkedin.png" alt="linkedin">
+        <h6 class="card-title text-center py-3 nav-link" routerLink="/api/auth/register" routerLinkActive="active">Sign Up</h6>
+      </div>
+    </div>
+  </div>
+</div>

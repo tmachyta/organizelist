@@ -1,0 +1,47 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 offset-md-3 mt-5">
+      <div class="card bg-light">
+        <div class="card-body">
+          <h2 class="card-title text-center py-3">Register</h2>
+          <form #registrationForm="ngForm" (ngSubmit)="register(registrationForm)">
+            <div class="form-group">
+              <label for="email">Email:</label>
+              <input type="email" id="email" name="email" class="form-control" required [(ngModel)]="registrationRequest.email">
+            </div>
+
+            <div class="form-group">
+              <label for="password">Password:</label>
+              <input type="password" id="password" name="password" class="form-control" required [(ngModel)]="registrationRequest.password">
+            </div>
+
+            <div class="form-group">
+              <label for="repeatPassword">Repeat Password:</label>
+              <input type="password" id="repeatPassword" name="repeatPassword" class="form-control" required [(ngModel)]="registrationRequest.repeatPassword">
+            </div>
+
+            <div class="form-group">
+              <label for="firstName">First Name:</label>
+              <input type="text" id="firstName" name="firstName" class="form-control" required [(ngModel)]="registrationRequest.firstName">
+            </div>
+
+            <div class="form-group">
+              <label for="lastName">Last Name:</label>
+              <input type="text" id="lastName" name="lastName" class="form-control" required [(ngModel)]="registrationRequest.lastName">
+            </div>
+
+            <div class="form-group">
+              <label for="phone">Phone Number:</label>
+              <input type="text" id="phone" name="phone" class="form-control" required [(ngModel)]="registrationRequest.phone">
+            </div>
+
+            <div class="text-center">
+              <button type="submit" class="btn btn-primary btn-lg btn-block mt-3">Register</button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>
