@@ -35,6 +35,11 @@
   color: black;
 }
 
+.buttons-routers h6.active {
+  color: #007bff;
+}
+
+
 .input-form {
   display: flex;
   width: 500px;

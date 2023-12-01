@@ -23,6 +23,6 @@ import {RegisterComponent} from "./components/register/register.component";
     RouterModule.forRoot([])
   ],
   providers: [],
-  bootstrap: [AppComponent, LoginComponent, RegisterComponent]
+  bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,47 +1,63 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-6 offset-md-3 mt-5">
-      <div class="card bg-light">
-        <div class="card-body">
-          <h2 class="card-title text-center py-3">Register</h2>
-          <form #registrationForm="ngForm" (ngSubmit)="register(registrationForm)">
-            <div class="form-group">
-              <label for="email">Email:</label>
-              <input type="email" id="email" name="email" class="form-control" required [(ngModel)]="registrationRequest.email">
-            </div>
-
-            <div class="form-group">
-              <label for="password">Password:</label>
-              <input type="password" id="password" name="password" class="form-control" required [(ngModel)]="registrationRequest.password">
-            </div>
-
-            <div class="form-group">
-              <label for="repeatPassword">Repeat Password:</label>
-              <input type="password" id="repeatPassword" name="repeatPassword" class="form-control" required [(ngModel)]="registrationRequest.repeatPassword">
-            </div>
-
-            <div class="form-group">
-              <label for="firstName">First Name:</label>
-              <input type="text" id="firstName" name="firstName" class="form-control" required [(ngModel)]="registrationRequest.firstName">
-            </div>
-
-            <div class="form-group">
-              <label for="lastName">Last Name:</label>
-              <input type="text" id="lastName" name="lastName" class="form-control" required [(ngModel)]="registrationRequest.lastName">
-            </div>
-
-            <div class="form-group">
-              <label for="phone">Phone Number:</label>
-              <input type="text" id="phone" name="phone" class="form-control" required [(ngModel)]="registrationRequest.phone">
-            </div>
-
-            <div class="text-center">
-              <button type="submit" class="btn btn-primary btn-lg btn-block mt-3">Register</button>
-            </div>
-          </form>
-        </div>
+    <div class="col-md-6 mx-auto mt-5 task-manager d-flex align-items-center">
+      <img src="assets/images/taskmanager.png" alt="taskmanager" style="max-width: 100%; height: auto; margin-bottom: 50px; margin-right: -100px; margin-left: 160px ">
+      <div class="ml-3">
+        <h1>Task Manager</h1>
+        <h6 class="task-management">Task Management: Elevate Efficiency, Control Tasks, Prioritize</h6>
       </div>
-      <router-outlet></router-outlet>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6 mx-auto mt-5">
+      <div class="buttons-routers">
+        <h6 class="card-title text-center py-3 nav-link" routerLink="/api/auth/login" routerLinkActive="active">Login</h6>
+        <h6 class="card-title text-center py-3 nav-link" routerLink="/api/auth/register" routerLinkActive="active">Sign Up</h6>
+      </div>
+      <div class="registration-form">
+        <form #registrationForm="ngForm" (ngSubmit)="register(registrationForm)">
+          <div class="input-form email">
+            <input type="email" id="email" name="email" class="form-control" required [(ngModel)]="registrationRequest.email" placeholder="Email">
+          </div>
+
+          <div class="input-form password">
+            <input type="password" id="password" name="password" class="form-control" required [(ngModel)]="registrationRequest.password" placeholder="Password">
+          </div>
+
+          <div class="input-form password">
+            <input type="password" id="repeatPassword" name="repeatPassword" class="form-control" required [(ngModel)]="registrationRequest.repeatPassword" placeholder="Repeat Password">
+          </div>
+
+          <div class="input-form email">
+            <input type="text" id="firstName" name="firstName" class="form-control" required [(ngModel)]="registrationRequest.firstName" placeholder="First Name">
+          </div>
+
+          <div class="input-form email">
+            <input type="text" id="lastName" name="lastName" class="form-control" required [(ngModel)]="registrationRequest.lastName" placeholder="Last Name">
+          </div>
+
+          <div class="input-form email">
+            <input type="text" id="phone" name="phone" class="form-control" required [(ngModel)]="registrationRequest.phone" placeholder="Phone Number">
+          </div>
+
+          <div class="checkbox-and-text">
+            <input type="checkbox" id="rememberMe" name="rememberMe">
+            <label for="rememberMe">Remember me</label>
+          </div>
+
+          <div class="button-sign">
+            <button type="submit" class="card-title text-center py-3 nav-link">Sign Up</button>
+          </div>
+        </form>
+      </div>
+      <div class="image-row">
+        <span>Quick Sign-in:</span>
+        <img src="assets/images/google-circle.png" alt="google-cicrle">
+        <img src="assets/images/windows.png" alt="windows">
+        <img src="assets/images/linkedin.png" alt="linkedin">
+        <h6 class="card-title text-center py-3 nav-link" routerLink="/api/auth/register" routerLinkActive="active">Sign Up</h6>
+      </div>
     </div>
   </div>
 </div>
