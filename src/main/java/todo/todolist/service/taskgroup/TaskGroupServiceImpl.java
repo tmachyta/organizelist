@@ -60,4 +60,12 @@ public class TaskGroupServiceImpl implements TaskGroupService {
 
         taskGroupRepository.deleteById(taskGroup.getId());
     }
+
+    @Override
+    public List<TaskGroupDto> getTaskGroupByUserEmail(String email) {
+        return taskGroupRepository.findTaskGroupByUserEmail(email)
+                .stream()
+                .map(taskGroupMapper::toDto)
+                .toList();
+    }
 }

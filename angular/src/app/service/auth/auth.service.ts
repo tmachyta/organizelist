@@ -22,4 +22,20 @@ export class AuthService {
   removeToken() {
     localStorage.removeItem('token');
   }
+
+  // Збереження ідентифікатора користувача в localStorage
+  saveUserId(userId: number) {
+    localStorage.setItem('userId', userId.toString());
+  }
+
+  // Отримання ідентифікатора користувача з localStorage
+  getUserId(): number | null {
+    const userIdString = localStorage.getItem('userId');
+    return userIdString ? parseInt(userIdString, 10) : null;
+  }
+
+  // Видалення ідентифікатора користувача з localStorage
+  removeUserId() {
+    localStorage.removeItem('userId');
+  }
 }

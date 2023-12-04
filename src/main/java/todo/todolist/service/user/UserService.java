@@ -8,4 +8,6 @@ public interface UserService {
     UserResponseDto register(UserRegistrationRequest request) throws RegistrationException;
 
     UserResponseDto findById(Long id);
+
+    UserResponseDto findByEmail(String email);
 }
