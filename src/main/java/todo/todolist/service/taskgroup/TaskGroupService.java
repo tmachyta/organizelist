@@ -15,4 +15,7 @@ public interface TaskGroupService {
     List<TaskGroupDto> getTaskGroupByUserId(Long userId);
 
     void deleteByTaskGroupIdAndUserId(Long id, Long userId);
+
+    List<TaskGroupDto> getTaskGroupByUserEmail(String email);
+
 }

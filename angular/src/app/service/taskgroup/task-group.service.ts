@@ -30,11 +30,15 @@ export class TaskGroupService {
     return this.http.post(this.baseUrl, request, this.getHttpOptions());
   }
 
+
   getAllTaskGroupsByCurrentUser(userId: number): Observable<TaskGroupDto[]> {
-    return this.http.get<TaskGroupDto[]>(`${this.baseUrl}/user?userId=${userId}`, this.getHttpOptions());
+    return this.http.get<TaskGroupDto[]>(`${this.baseUrl}/user/${userId}`, this.getHttpOptions());
+  }
+  getAllTaskGroupsByCurrentUserE(email: string): Observable<TaskGroupDto[]> {
+    return this.http.get<TaskGroupDto[]>(`${this.baseUrl}/user/${email}`, this.getHttpOptions());
   }
 
   deleteTaskGroupByIdByCurrentUser(id: number, userId: number): Observable<void> {
-    return this.http.delete<void>(`${this.baseUrl}/user/${id}?userId=${userId}`, this.getHttpOptions());
+    return this.http.delete<void>(`${this.baseUrl}/user/${id}/${userId}`, this.getHttpOptions());
   }
 }

@@ -32,8 +32,12 @@ export class LoginComponent {
         (response: UserLoginResponse) => {
           console.log('Successfully logged in:', response);
           this.authService.saveToken(response.token)
-          this.router.navigate(['/api/task-groups']);
+          const encodedEmail = encodeURIComponent(request.email);
+          /*this.router.navigate(['/api/task-groups/user'], { queryParams: { email: encodedEmail } });*/
+          /*this.router.navigate([`/api/task-groups/user?email=${encodedEmail}`]);*/
+          this.router.navigate([`/api/task-groups/user/${encodedEmail}`]);
         },
+
         (error) => {
           console.error('Login error:', error);
         }

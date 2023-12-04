@@ -19,4 +19,7 @@ public interface TaskGroupRepository extends JpaRepository<TaskGroup, Long> {
             + "WHERE t.id = :id AND t.user.id = :userId")
     Optional<TaskGroup> findTaskGroupByIdAndUserId(@Param("id") Long id,
                                                    @Param("userId") Long userId);
+
+    @Query("SELECT DISTINCT tg FROM TaskGroup tg JOIN tg.tasks t WHERE t.user.email = :email")
+    List<TaskGroup> findTaskGroupByUserEmail(@Param("email") String email);
 }
