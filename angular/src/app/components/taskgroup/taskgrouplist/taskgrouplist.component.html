@@ -8,12 +8,20 @@
 
 <div class="sidebar">
   <div class="task-groups">
-    <p *ngFor="let taskGroup of taskGroups" (click)="toggleTaskList(taskGroup.id)" [class.active]="isTaskListVisible(taskGroup.id)">
-      {{ taskGroup.name }}
-    </p>
-    <!-- <button (click)="toggleNewTaskInput()">+ Add New Task</button> -->
-    <!-- <input *ngIf="showNewTaskInput" [(ngModel)]="newGroup.name" placeholder="New Task Group Name" />
-    <button *ngIf="showNewTaskInput" (click)="createTaskGroup()">Add</button> -->
+    <div *ngFor="let taskGroup of taskGroups" class="task-group" [class.active]="isTaskListVisible(taskGroup.id)">
+      <p (click)="toggleTaskList(taskGroup.id)">
+        <span class="task-group-name" [class.active]="isTaskListVisible(taskGroup.id)">{{ taskGroup.name }}</span>
+        <span class="delete-icon" (click)="deleteTaskGroup(taskGroup.id)">🗑️</span>
+      </p>
+    </div>
+
+    <button (click)="toggleNewTaskInput()">+ Add New Task Group</button>
+
+    <div *ngIf="showNewTaskInput">
+      <input [(ngModel)]="newGroup.name" placeholder="New Task Group Name" />
+      <button (click)="createTaskGroup()">Add</button>
+      <button (click)="clearForm()">Clear</button>
+    </div>
   </div>
 </div>
 
@@ -21,9 +29,8 @@
 
 <!-- Main Content (Tasks) -->
 <div class="content">
-  <h2>Tasks</h2>
   <div *ngFor="let taskGroup of taskGroups">
-    <h3 *ngIf="isTaskListVisible(taskGroup.id)">{{ taskGroup.name }} Tasks</h3>
+    <h5 *ngIf="isTaskListVisible(taskGroup.id)">{{ taskGroup.name }} Tasks</h5>
     <table *ngIf="isTaskListVisible(taskGroup.id)">
       <thead>
       <tr>
@@ -48,8 +55,6 @@
     </table>
   </div>
 </div>
-
-<a [routerLink]="['/api/tasks/user/email', email]">Перейти до завдань користувача</a>
 
 <ng-template #noTaskGroups>
   <p>No task groups available.</p>

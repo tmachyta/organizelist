@@ -34,7 +34,8 @@ export class LoginComponent {
           this.authService.saveToken(response.token)
           this.authService.saveUserEmail(request.email);
           this.authService.saveUserId(response.userId)
-          this.router.navigate(['api/task-groups/user/email', request.email]);
+          // this.router.navigate(['api/task-groups/user/email', request.email]);
+          this.router.navigate(['api/task-groups/user/id', response.userId]);
         },
 
         (error) => {

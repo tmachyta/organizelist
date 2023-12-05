@@ -34,16 +34,18 @@ export class TaskgrouplistComponent implements OnInit {
   ngOnInit(): void {
     this.getUserData();
     this.route.params.subscribe((params) => {
-      this.userId = +params['id'];
+      const userId = +params['userId'];
       const email = params['email'];
-      if (this.userId) {
-        this.loadTaskGroupsByUserId(this.userId);
+      if (userId) {
+        this.loadTaskGroupsByUserId(userId);
       } else if (email) {
         this.loadTaskGroupsByUserEmail(email);
       }
     });
   }
 
+
+  // Load taskGroups by userId
   loadTaskGroupsByUserId(userId: number) {
     this.taskGroupService.getAllTaskGroupsByCurrentUser(userId).subscribe(
       (taskGroups: TaskGroupDto[]) => {
@@ -55,6 +57,7 @@ export class TaskgrouplistComponent implements OnInit {
     );
   }
 
+  // Load taskGroups by User Email
   loadTaskGroupsByUserEmail(email: string) {
     this.taskGroupService.getAllTaskGroupsByCurrentUserE(email).subscribe(
       (taskGroups: TaskGroupDto[]) => {
@@ -66,6 +69,7 @@ export class TaskgrouplistComponent implements OnInit {
     );
   }
 
+  // Open task group
   toggleTaskList(taskGroupId: number): void {
     const index = this.visibleTaskLists.indexOf(taskGroupId);
     if (index === -1) {
@@ -75,6 +79,7 @@ export class TaskgrouplistComponent implements OnInit {
     }
   }
 
+  // Open task group
   isTaskListVisible(taskGroupId: number): boolean {
     return this.visibleTaskLists.includes(taskGroupId);
   }
@@ -94,7 +99,9 @@ export class TaskgrouplistComponent implements OnInit {
     }
   }
 
+  // Go to User Profile
   goToUserProfile() {
+    const userId = this.authService.getLoggedInUserId();
     this.router.navigate(['api/user/me', this.userId]);
   }
 
@@ -103,6 +110,50 @@ export class TaskgrouplistComponent implements OnInit {
     if (!this.showNewTaskInput) {
       this.newGroup.name = '';
     }
+  }
+
+
+  // Create new TaskGroup
+  createTaskGroup() {
+    const userId = this.authService.getLoggedInUserId();
+
+    if (userId !== null) {
+      const request: CreateTaskGroupRequest = {
+        name: this.newGroup.name,
+        userId: userId,
+      };
+
+      this.taskGroupService.createTaskGroup(request).subscribe(
+        (response) => {
+          this.loadTaskGroupsByUserId(userId)
+          console.log('TaskGroup created successfully', response);
+          this.clearForm();
+          this.showNewTaskInput = false;
+        },
+        (error) => {
+          console.error('Cant create task group', error);
+        }
+      );
+    } else {
+      console.error('Cant find user by userID.');
+    }
+  }
+
+  // Clear From for inputting TaskGroup name
+  clearForm() {
+    this.newGroup.name = '';
+  }
+
+  // Delete taskGroup
+  deleteTaskGroup(id: number) {
+    this.taskGroupService.deleteTaskGroupById(id).subscribe(
+      () => {
+        this.loadTaskGroupsByUserId(this.userId)
+      },
+      (error) => {
+        console.error('Error deleting taskGroup:', error);
+      }
+    )
   }
 
 }

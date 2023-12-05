@@ -10,4 +10,6 @@ public interface UserService {
     UserResponseDto findById(Long id);
 
     UserResponseDto findByEmail(String email);
+
+    Long findUserIdByEmail(String email);
 }

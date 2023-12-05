@@ -8,9 +8,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 import todo.todolist.dto.user.UserLoginRequest;
 import todo.todolist.dto.user.UserLoginResponse;
-import todo.todolist.dto.user.UserResponseDto;
-import todo.todolist.exception.EntityNotFoundException;
-import todo.todolist.repository.user.UserRepository;
 import todo.todolist.service.user.UserService;
 
 @RequiredArgsConstructor
@@ -25,8 +22,11 @@ public class AuthenticationService {
                 new UsernamePasswordAuthenticationToken(requestDto.email(), requestDto.password())
         );
 
+        UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+
+        Long userId = userService.findUserIdByEmail(userDetails.getUsername());
 
         String token = jwtUtil.generateToken(authentication.getName());
-        return new UserLoginResponse(token);
+        return new UserLoginResponse(token, userId);
     }
 }

@@ -33,7 +33,7 @@ export class TaskGroupService {
 
 
   getAllTaskGroupsByCurrentUser(userId: number): Observable<TaskGroupDto[]> {
-    return this.http.get<TaskGroupDto[]>(`${this.baseUrl}/user/${userId}`, this.getHttpOptions());
+    return this.http.get<TaskGroupDto[]>(`${this.baseUrl}/user/id/${userId}`, this.getHttpOptions());
   }
   getAllTaskGroupsByCurrentUserE(email: string): Observable<TaskGroupDto[]> {
     return this.http.get<TaskGroupDto[]>(`${this.baseUrl}/user/email/${email}`, this.getHttpOptions());
