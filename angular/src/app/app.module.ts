@@ -9,6 +9,8 @@ import {LoginComponent} from "./components/login/login.component";
 import {RegisterComponent} from "./components/register/register.component";
 import {TaskgroupComponent} from "./components/taskgroup/taskgroup.component";
 import {TaskgrouplistComponent} from "./components/taskgroup/taskgrouplist/taskgrouplist.component";
+import {TasklistComponent} from "./components/task/tasklist/tasklist.component";
+import {UserComponent} from "./components/user/user.component";
 
 
 @NgModule({
@@ -17,7 +19,9 @@ import {TaskgrouplistComponent} from "./components/taskgroup/taskgrouplist/taskg
     LoginComponent,
     RegisterComponent,
     TaskgroupComponent,
-    TaskgrouplistComponent
+    TaskgrouplistComponent,
+    TasklistComponent,
+    UserComponent
   ],
   imports: [
     BrowserModule,

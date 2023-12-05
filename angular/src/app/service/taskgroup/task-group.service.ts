@@ -14,6 +14,7 @@ export class TaskGroupService {
 
   private getHttpOptions() {
     const token = localStorage.getItem('token');
+    console.log(token);
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
     return {headers};
   }
@@ -35,10 +36,6 @@ export class TaskGroupService {
     return this.http.get<TaskGroupDto[]>(`${this.baseUrl}/user/${userId}`, this.getHttpOptions());
   }
   getAllTaskGroupsByCurrentUserE(email: string): Observable<TaskGroupDto[]> {
-    return this.http.get<TaskGroupDto[]>(`${this.baseUrl}/user/${email}`, this.getHttpOptions());
-  }
-
-  deleteTaskGroupByIdByCurrentUser(id: number, userId: number): Observable<void> {
-    return this.http.delete<void>(`${this.baseUrl}/user/${id}/${userId}`, this.getHttpOptions());
+    return this.http.get<TaskGroupDto[]>(`${this.baseUrl}/user/email/${email}`, this.getHttpOptions());
   }
 }

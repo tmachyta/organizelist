@@ -77,7 +77,7 @@
 
 .input-form.password::before {
   content: '';
-  background: url('/../assets/images/inputpassword.png') no-repeat;
+  background: url('/assets/images/inputpassword.png') no-repeat;
   background-size: 20px 20px;
   position: absolute;
   left: 8px;

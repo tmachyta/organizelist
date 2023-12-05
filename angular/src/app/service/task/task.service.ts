@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {HttpClient, HttpParams, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {TaskDto} from "../../model/task/task-dto";
 import {CreateTaskRequest} from "../../model/task/create-task-request";
+import {TaskGroupDto} from "../../model/taskgroup/task-group-dto";
 
 @Injectable({
   providedIn: 'root'
@@ -39,7 +40,11 @@ export class TaskService {
   }
 
   getAllTaskByCurrentUser(userId: number): Observable<TaskDto[]> {
-    return this.http.get<TaskDto[]>(`${this.baseUrl}/user?userId=${userId}`, this.getHttpOptions());
+    return this.http.get<TaskDto[]>(`${this.baseUrl}/user/id/${userId}`, this.getHttpOptions());
+  }
+
+  getAllTaskByCurrentUserEmail(email: string): Observable<TaskDto[]> {
+    return this.http.get<TaskDto[]>(`${this.baseUrl}/user/email/${email}`, this.getHttpOptions());
   }
 
   getTaskByIdAndUserId(id: number, userId: number): Observable<TaskDto> {

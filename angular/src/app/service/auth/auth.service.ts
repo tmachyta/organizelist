@@ -5,7 +5,8 @@ import { Injectable } from '@angular/core';
 })
 export class AuthService {
 
-  constructor() { }
+  constructor() {
+  }
 
 
   // Збереження токену в localStorage
@@ -23,19 +24,31 @@ export class AuthService {
     localStorage.removeItem('token');
   }
 
-  // Збереження ідентифікатора користувача в localStorage
-  saveUserId(userId: number) {
-    localStorage.setItem('userId', userId.toString());
+  // Збереження email користувача в localStorage
+  saveUserEmail(email: string) {
+    localStorage.setItem('email', email);
   }
 
-  // Отримання ідентифікатора користувача з localStorage
-  getUserId(): number | null {
-    const userIdString = localStorage.getItem('userId');
-    return userIdString ? parseInt(userIdString, 10) : null;
+  // Отримання email користувача з localStorage
+  getUserEmail(): string | null {
+    return localStorage.getItem('email');
   }
 
-  // Видалення ідентифікатора користувача з localStorage
-  removeUserId() {
-    localStorage.removeItem('userId');
+  // Видалення email користувача з localStorage
+  removeUserEmail() {
+    localStorage.removeItem('email');
+  }
+
+
+  saveUserId(userId: number | null) {
+    if (userId !== null && userId !== undefined) {
+      localStorage.setItem('userId', userId.toString());
+    }
+  }
+
+    // Отримання ID користувача з localStorage
+  getLoggedInUserId(): number | null {
+    const userId = localStorage.getItem('userId');
+    return userId ? +userId : null;
   }
 }
