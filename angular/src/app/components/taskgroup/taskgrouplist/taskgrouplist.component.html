@@ -1,0 +1,56 @@
+<!-- taskgrouplist.component.html -->
+
+<div class="header">
+  <div class="user-info" (click)="goToUserProfile()">
+    <img src="assets/images/inputemail.png" alt="Avatar">
+  </div>
+</div>
+
+<div class="sidebar">
+  <div class="task-groups">
+    <p *ngFor="let taskGroup of taskGroups" (click)="toggleTaskList(taskGroup.id)" [class.active]="isTaskListVisible(taskGroup.id)">
+      {{ taskGroup.name }}
+    </p>
+    <!-- <button (click)="toggleNewTaskInput()">+ Add New Task</button> -->
+    <!-- <input *ngIf="showNewTaskInput" [(ngModel)]="newGroup.name" placeholder="New Task Group Name" />
+    <button *ngIf="showNewTaskInput" (click)="createTaskGroup()">Add</button> -->
+  </div>
+</div>
+
+
+
+<!-- Main Content (Tasks) -->
+<div class="content">
+  <h2>Tasks</h2>
+  <div *ngFor="let taskGroup of taskGroups">
+    <h3 *ngIf="isTaskListVisible(taskGroup.id)">{{ taskGroup.name }} Tasks</h3>
+    <table *ngIf="isTaskListVisible(taskGroup.id)">
+      <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Priority</th>
+        <th>Status</th>
+        <th>Date</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let task of taskGroup.tasks">
+        <td>{{ task.id }}</td>
+        <td>{{ task.name }}</td>
+        <td>{{ task.description }}</td>
+        <td>{{ task.priority }}</td>
+        <td>{{ task.status }}</td>
+        <td>{{ task.date }}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<a [routerLink]="['/api/tasks/user/email', email]">Перейти до завдань користувача</a>
+
+<ng-template #noTaskGroups>
+  <p>No task groups available.</p>
+</ng-template>

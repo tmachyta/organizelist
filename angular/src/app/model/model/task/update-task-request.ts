@@ -1,8 +1,7 @@
-export class TaskDto {
-  id: number = 0;
+export class UpdateTaskRequest {
   name: string = '';
   description: string = '';
   priority: string = '';
   status: string = '';
-  date: string = '';
+  orderDate: string = '';
 }

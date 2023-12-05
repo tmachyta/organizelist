@@ -32,10 +32,9 @@ export class LoginComponent {
         (response: UserLoginResponse) => {
           console.log('Successfully logged in:', response);
           this.authService.saveToken(response.token)
-          const encodedEmail = encodeURIComponent(request.email);
-          /*this.router.navigate(['/api/task-groups/user'], { queryParams: { email: encodedEmail } });*/
-          /*this.router.navigate([`/api/task-groups/user?email=${encodedEmail}`]);*/
-          this.router.navigate([`/api/task-groups/user/${encodedEmail}`]);
+          this.authService.saveUserEmail(request.email);
+          this.authService.saveUserId(response.userId)
+          this.router.navigate(['api/task-groups/user/email', request.email]);
         },
 
         (error) => {

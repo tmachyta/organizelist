@@ -1,0 +1,118 @@
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  overflow: hidden; /* Забороняє прокручування сторінки, якщо воно не потрібно */
+}
+
+.header {
+  background-color: black;
+  color: white;
+  padding: 10px;
+  display: flex;
+  justify-content: flex-end; /* Відцентровуємо елементи вправо */
+  align-items: center;
+}
+
+.user-info {
+  display: flex;
+  flex-direction: column; /* Змінюємо напрямок розташування елементів на вертикальний */
+  align-items: center;
+  cursor: pointer; /* Додаємо курсор при наведенні, щоб вказати на можливість кліку */
+}
+
+.user-info img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  margin-bottom: 5px; /* Змінюємо відстань між зображенням та текстом */
+}
+
+.user-info span {
+  color: white;
+  text-decoration: none;
+}
+
+.user-info:hover span {
+  text-decoration: underline; /* Підкреслення при наведенні */
+}
+
+
+.container {
+  display: flex;
+  height: 100vh;
+  box-sizing: border-box;
+}
+
+/* taskgrouplist.component.css */
+.sidebar {
+  width: 20%;
+  padding: 10px;
+  background-color: whitesmoke;
+  display: flex;
+  flex-direction: column;
+  position: sticky;
+  top: 60px;
+  height: 100vh; /* Змінено висоту на 100% від висоти видимої частини екрану */
+}
+
+.task-groups {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Додав align-items, щоб зсувати текст вліво */
+}
+
+.task-groups p {
+  cursor: pointer;
+  margin: 5px 0;
+  padding: 5px;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.task-groups p:hover {
+  background-color: #ddd;
+}
+
+.task-groups p.active {
+  background-color: #a8dadc;
+}
+
+.content {
+  flex-grow: 1;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: flex-start;
+}
+
+.table-container {
+  width: 100%;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  align-self: stretch;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  align-self: stretch;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 12px;
+  text-align: left;
+}
+
+th {
+  background-color: #f2f2f2;
+}
+
