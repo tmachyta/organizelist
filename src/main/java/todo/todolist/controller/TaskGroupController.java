@@ -53,11 +53,11 @@ public class TaskGroupController {
         taskGroupService.deleteById(id);
     }
 
-    @GetMapping("/user/me")
+    @GetMapping("/user/id/{userId}")
     @PreAuthorize("#userId == authentication.principal.id")
     @Operation(summary = "Get all tasks-groups",
             description = "Get a list of all available task-groups by authenticated user")
-    public List<TaskGroupDto> getTaskGroupByUserId(@RequestParam Long userId) {
+    public List<TaskGroupDto> getTaskGroupByUserId(@PathVariable Long userId) {
         return taskGroupService.getTaskGroupByUserId(userId);
     }
 
@@ -70,11 +70,11 @@ public class TaskGroupController {
         taskGroupService.deleteByTaskGroupIdAndUserId(id, userId);
     }
 
-    @GetMapping("/user")
+    @GetMapping("/user/email/{email}")
     @PreAuthorize("#email == authentication.principal.email")
     @Operation(summary = "Get all tasks-groups",
             description = "Get a list of all available task-groups by authenticated user")
-    public List<TaskGroupDto> getTaskGroupByUserEmail(@RequestParam String email) {
+    public List<TaskGroupDto> getTaskGroupByUserEmail(@PathVariable String email) {
         return taskGroupService.getTaskGroupByUserEmail(email);
     }
 }

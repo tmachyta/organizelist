@@ -14,6 +14,7 @@ const routes: Routes = [
   { path: 'api/auth/login', component: LoginComponent },
   { path: 'api/task-groups', component: TaskgroupComponent },
   { path: 'api/task-groups/user/email/:email', component: TaskgrouplistComponent },
+  { path: 'api/task-groups/user/id/:userId', component: TaskgrouplistComponent },
   { path: 'api/tasks/user/email/:email', component: TasklistComponent },
   { path: 'api/user/me/:id', component: UserComponent }
 ];

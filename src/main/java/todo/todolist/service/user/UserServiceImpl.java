@@ -55,4 +55,12 @@ public class UserServiceImpl implements UserService {
                         "Can't find user by email " + email));
         return userMapper.toDto(user);
     }
+
+    @Override
+    public Long findUserIdByEmail(String email) {
+        User user = userRepository.findByEmail(email)
+                .orElseThrow(() -> new EntityNotFoundException(
+                        "Can't find user by email " + email));
+        return user.getId();
+    }
 }

@@ -11,7 +11,9 @@ import todo.todolist.model.TaskGroup;
 @Repository
 public interface TaskGroupRepository extends JpaRepository<TaskGroup, Long> {
 
-    @Query("SELECT DISTINCT tg FROM TaskGroup tg JOIN tg.tasks t WHERE t.user.id = :userId")
+    @Query("SELECT DISTINCT tg FROM TaskGroup tg "
+            + "LEFT JOIN tg.tasks t "
+            + "WHERE t.user.id = :userId OR t.id IS NULL")
     List<TaskGroup> findTaskGroupByUserId(@Param("userId") Long userId);
 
     @Query("SELECT DISTINCT tg FROM TaskGroup tg "
@@ -20,6 +22,8 @@ public interface TaskGroupRepository extends JpaRepository<TaskGroup, Long> {
     Optional<TaskGroup> findTaskGroupByIdAndUserId(@Param("id") Long id,
                                                    @Param("userId") Long userId);
 
-    @Query("SELECT DISTINCT tg FROM TaskGroup tg JOIN tg.tasks t WHERE t.user.email = :email")
+    @Query("SELECT DISTINCT tg FROM TaskGroup tg "
+            + "Left JOIN tg.tasks t " +
+            "WHERE t.user.email = :email OR t.id IS NULL")
     List<TaskGroup> findTaskGroupByUserEmail(@Param("email") String email);
 }

@@ -45,6 +45,7 @@ body {
 }
 
 /* taskgrouplist.component.css */
+/* taskgrouplist.component.css */
 .sidebar {
   width: 20%;
   padding: 10px;
@@ -53,29 +54,45 @@ body {
   flex-direction: column;
   position: sticky;
   top: 60px;
-  height: 100vh; /* Змінено висоту на 100% від висоти видимої частини екрану */
+  height: 100vh;
 }
 
 .task-groups {
   display: flex;
   flex-direction: column;
-  align-items: flex-start; /* Додав align-items, щоб зсувати текст вліво */
 }
 
-.task-groups p {
-  cursor: pointer;
-  margin: 5px 0;
-  padding: 5px;
-  border-radius: 5px;
-  transition: background-color 0.3s;
+.task-group {
+  margin-bottom: 10px; /* Змініть за потребою */
 }
 
-.task-groups p:hover {
-  background-color: #ddd;
+.task-group p {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.task-groups p.active {
-  background-color: #a8dadc;
+.task-group .task-group-name {
+  flex-grow: 1; /* Вирівнює текст групи по всій доступній ширині */
+  cursor: pointer; /* Додано cursor pointer */
+}
+
+.task-group .delete-icon {
+  margin-left: 10px; /* Змініть це значення за необхідності */
+}
+
+.task-group p:hover .task-group-name {
+
+}
+
+.task-group-name.active {
+  color: blue;
+  text-decoration: underline;
+}
+
+.task-groups input,
+.task-groups button {
+  margin-top: 5px; /* Змініть значення за потребою */
 }
 
 .content {
@@ -83,27 +100,27 @@ body {
   padding: 20px;
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
+  align-items: center; /* Змінено на центрування */
   justify-content: flex-start;
+  margin-top: -700px;
 }
 
 .table-container {
   width: 100%;
+  overflow-x: auto; /* Додано горизонтальну прокрутку */
   margin-top: 20px;
-  display: flex;
+  align-items: center; /* Додано вирівнювання по центру */
+  display: flex; /* Додано властивість display */
   flex-direction: column;
-  align-items: flex-end;
-  align-self: stretch;
 }
 
 table {
   width: 100%;
   border-collapse: collapse;
   margin-top: 20px;
+  align-items: center;
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
-  align-self: stretch;
 }
 
 th, td {
@@ -115,4 +132,3 @@ th, td {
 th {
   background-color: #f2f2f2;
 }
-
